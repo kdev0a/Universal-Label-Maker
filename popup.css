@@ -1,0 +1,137 @@
+body {
+    font-family: sans-serif;
+    width: 450px; /* Adjust as needed */
+    min-height: 300px; /* Adjust as needed */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.tab-nav {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.tab-button {
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    border-bottom: none;
+    background-color: #eee;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.tab-button.active {
+    background-color: #fff;
+    border-color: #ccc;
+    border-bottom: 1px solid #fff; /* Cover the main border */
+    position: relative;
+    top: 1px; /* Align with bottom border */
+}
+
+.tab-content {
+    display: none; /* Hidden by default */
+}
+
+.tab-content.active {
+    display: block; /* Shown when active */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+li {
+    border: 1px solid #eee;
+    padding: 8px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li span {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+li button {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.editor-form {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-top: 15px;
+    background-color: #f9f9f9;
+}
+
+.editor-form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.editor-form input[type="text"],
+.editor-form input[type="number"],
+.editor-form textarea,
+.editor-form select {
+    width: 95%;
+    padding: 5px;
+    margin-top: 3px;
+}
+
+.editor-form textarea {
+    height: 40px;
+}
+
+.editor-form button {
+    margin-top: 10px;
+    margin-right: 5px;
+    padding: 8px 15px;
+}
+
+#editor-area {
+    border: 1px dashed #aaa;
+    min-height: 150px;
+    margin-top: 10px;
+    padding: 10px;
+    position: relative; /* For potential absolute positioning of elements */
+    background-color: #f0f0f0;
+    overflow: auto; /* If content exceeds dimensions */
+}
+
+#editor-area .label-element {
+    border: 1px solid #999;
+    background-color: white;
+    padding: 5px;
+    margin-bottom: 5px; /* Simple stacking for boilerplate */
+}
+
+#editor-area .label-element.codebox {
+    background-color: #ddd;
+    text-align: center;
+    font-style: italic;
+}
+
+#template-elements-editor {
+    border: 1px dashed #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    background: #fff;
+}
+#template-elements-list div {
+    border: 1px solid #eee;
+    padding: 5px;
+    margin-bottom: 3px;
+    font-size: 0.9em;
+}
+
+#site-template-assignment {
+     border: 1px dashed #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    background: #fff;
+}

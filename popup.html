@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Label Printer</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="tab-nav">
+        <button id="tab-editor" class="tab-button active">Editor</button>
+        <button id="tab-templates" class="tab-button">Templates</button> <!-- Still a tab -->
+        <button id="tab-sites" class="tab-button">Sites</button>
+    </div>
+
+    <div id="content-editor" class="tab-content active">
+        <h2>Editor</h2>
+        <div id="editor-status">Loading...</div>
+        <div id="editor-template-selector" style="display: none;">
+            <label for="template-select">Select Template:</label>
+            <select id="template-select"></select>
+        </div>
+        <div id="editor-area">
+            <!-- WYSIWYG Editor will be rendered here by JS -->
+        </div>
+        <button id="print-button" style="display: none;">Print Label</button>
+    </div>
+
+    <div id="content-templates" class="tab-content">
+        <!-- CONTENT CHANGED: Now just a button to open the options page -->
+        <h2>Templates</h2>
+        <p>Manage your label templates in the full settings page.</p>
+        <button id="open-options-page-btn">Open Template Manager</button>
+    </div>
+
+    <div id="content-sites" class="tab-content">
+        <!-- Site management remains in the popup for now -->
+        <h2>Sites</h2>
+        <ul id="sites-list"></ul>
+        <button id="add-site-btn">Add New Site</button>
+        <div id="site-editor" class="editor-form" style="display: none;">
+             <h3 id="site-editor-title">Add New Site</h3>
+             <input type="hidden" id="site-edit-id">
+             <label>Name: <input type="text" id="site-name" required></label>
+             <label>Description: <textarea id="site-desc"></textarea></label>
+             <label>URI Pattern: <input type="text" id="site-uri" placeholder="e.g., *://*.example.com/*" required></label>
+             <h4>Assign Templates (Requires Templates)</h4>
+             <div id="site-template-assignment">
+                 <!-- List of available templates with checkboxes will go here -->
+                 <p><i>Template selection checkboxes go here.</i></p>
+             </div>
+             <button id="save-site-btn">Save Site</button>
+             <button id="cancel-site-btn" type="button">Cancel</button>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

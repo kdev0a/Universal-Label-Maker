@@ -1,0 +1,236 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f3f4; /* Google-ish background */
+    display: flex; /* Use flex for view switching */
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h3 {
+    color: #333;
+}
+
+/* List View Styles */
+#template-list-view {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#options-templates-list {
+    list-style: none;
+    padding: 0;
+}
+
+#options-templates-list li {
+    border: 1px solid #eee;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+}
+
+#options-templates-list li span {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+#options-templates-list li span b {
+    font-size: 1.1em;
+}
+#options-templates-list li span small {
+    display: block;
+    color: #666;
+    font-size: 0.9em;
+}
+
+
+#options-templates-list li button,
+#options-add-template-btn {
+    margin-left: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #f8f8f8;
+    border-radius: 4px;
+}
+#options-add-template-btn {
+    padding: 10px 15px;
+    margin-top: 15px;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+}
+#options-add-template-btn:hover {
+     background-color: #357ae8;
+}
+
+/* Editor View Styles */
+#template-editor-view {
+    display: flex; /* Use flex for editor layout */
+    flex-direction: column;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent body scroll */
+}
+
+.editor-toolbar {
+    background-color: #edf2fa; /* Google-ish toolbar */
+    padding: 8px 15px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; /* Prevent toolbar from shrinking */
+}
+.editor-toolbar span#editor-view-title {
+    font-weight: bold;
+    margin-right: 20px;
+}
+.editor-toolbar button, .editor-toolbar select {
+    margin-right: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+#save-template-changes {
+    background-color: #34a853;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+#exit-template-editor {
+     margin-left: auto; /* Push exit button to the right */
+}
+
+
+.editor-main-area {
+    display: flex;
+    flex-grow: 1; /* Take remaining vertical space */
+    overflow: hidden; /* Prevent scroll within this container */
+}
+
+.editor-canvas-container {
+    flex-grow: 1; /* Take available horizontal space */
+    background-color: #e0e0e0; /* Grey background for canvas area */
+    padding: 20px;
+    overflow: auto; /* Allow scrolling/zooming */
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Stack canvas and controls */
+}
+
+#editor-canvas {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative; /* For absolute positioning of elements */
+    /* Dimensions will be set by JS based on template */
+    width: 400px; /* Example default */
+    height: 200px; /* Example default */
+    margin: auto; /* Center the canvas */
+    overflow: hidden; /* Clip elements outside bounds */
+    flex-shrink: 0; /* Prevent canvas from shrinking weirdly */
+}
+
+#canvas-elements-container {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+
+.canvas-controls {
+    padding-top: 10px;
+    text-align: center;
+    flex-shrink: 0;
+}
+.canvas-controls button {
+    margin: 0 5px;
+}
+
+
+/* Dummy Element Styling on Canvas */
+.canvas-element {
+    position: absolute;
+    border: 1px dashed #999;
+    background-color: rgba(200, 200, 255, 0.7);
+    cursor: grab; /* Indicate draggable */
+    overflow: hidden;
+    font-size: 0.8em;
+    padding: 3px;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+.canvas-element.selected {
+    border: 2px solid #4285f4;
+    background-color: rgba(66, 133, 244, 0.3);
+}
+.canvas-element.codebox-element {
+     background-color: rgba(220, 220, 220, 0.8);
+     text-align: center;
+     font-style: italic;
+}
+
+
+.editor-sidebar {
+    width: 300px; /* Fixed width sidebar */
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    background-color: #fff;
+    border-left: 1px solid #ddd;
+    padding: 15px;
+    overflow-y: auto; /* Allow sidebar content to scroll */
+    box-sizing: border-box;
+}
+
+.editor-sidebar h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+.editor-sidebar label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+.editor-sidebar input[type="text"],
+.editor-sidebar input[type="number"],
+.editor-sidebar textarea,
+.editor-sidebar select {
+    width: 95%;
+    padding: 6px;
+    margin-top: 3px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding in width */
+}
+.editor-sidebar textarea {
+    height: 50px;
+    resize: vertical;
+}
+
+#element-toolbox {
+    margin-top: 15px;
+}
+#element-toolbox button {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 5px 8px;
+}
+
+#element-properties .prop-group {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+    /* Hide groups by default, show based on selected element type */
+    display: none;
+}
+#element-properties-placeholder {
+    color: #777;
+    font-style: italic;
+    margin-top: 15px;
+}

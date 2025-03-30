@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Label Templates Manager</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div id="template-list-view">
+        <h1>Label Templates</h1>
+        <ul id="options-templates-list">
+            <!-- Template list items will be added here by JS -->
+        </ul>
+        <button id="options-add-template-btn">Add New Template</button>
+    </div>
+
+    <div id="template-editor-view" style="display: none;">
+        <div class="editor-toolbar">
+            <span id="editor-view-title">Editing Template</span>
+            <button id="save-template-changes">Save</button>
+            <!-- Placeholder formatting buttons -->
+            <button class="dummy-format-btn">B</button>
+            <button class="dummy-format-btn">I</button>
+            <select class="dummy-format-select">
+                <option>Arial</option>
+                <option>Verdana</option>
+            </select>
+            <!-- End Placeholder -->
+            <button id="exit-template-editor">Exit Editor</button>
+            <span id="save-status" style="margin-left: 15px; font-style: italic;"></span>
+        </div>
+
+        <div class="editor-main-area">
+            <div class="editor-canvas-container">
+                <div id="editor-canvas">
+                    <!-- WYSIWYG Canvas Area -->
+                    <p><i>Drag elements here. Select elements to edit properties. (Placeholder)</i></p>
+                    <div id="canvas-elements-container">
+                        <!-- Dummy elements will be added here -->
+                    </div>
+                </div>
+                 <div class="canvas-controls">
+                    <button>Zoom In (+)</button>
+                    <button>Zoom Out (-)</button>
+                </div>
+            </div>
+
+            <div class="editor-sidebar">
+                <div id="template-properties">
+                    <h3>Template Properties</h3>
+                    <input type="hidden" id="editing-template-id">
+                    <label>Name: <input type="text" id="options-template-name" required></label>
+                    <label>Description: <textarea id="options-template-desc"></textarea></label>
+                    <label>Width: <input type="number" id="options-template-width" step="0.1" required></label>
+                    <label>Height: <input type="number" id="options-template-height" step="0.1" required></label>
+                    <label>Unit:
+                        <select id="options-template-unit">
+                            <option value="in">Inches</option>
+                            <option value="cm">Centimeters</option>
+                        </select>
+                    </label>
+                    <label>Margin Top: <input type="number" id="options-template-margin-top" step="0.1" value="0"></label>
+                    <label>Margin Bottom: <input type="number" id="options-template-margin-bottom" step="0.1" value="0"></label>
+                    <label>Margin Left: <input type="number" id="options-template-margin-left" step="0.1" value="0"></label>
+                    <label>Margin Right: <input type="number" id="options-template-margin-right" step="0.1" value="0"></label>
+                </div>
+                <hr>
+                 <div id="element-toolbox">
+                     <h4>Add Elements</h4>
+                     <button data-type="Textbox">Add Textbox</button>
+                     <button data-type="Imagebox">Add Imagebox</button>
+                     <button data-type="Codebox">Add Codebox</button>
+                 </div>
+                 <hr>
+                <div id="element-properties" style="display: none;">
+                    <h3>Element Properties</h3>
+                    <input type="hidden" id="editing-element-id">
+                    <p><strong>ID:</strong> <span id="element-prop-id"></span></p>
+                    <p><strong>Type:</strong> <span id="element-prop-type"></span></p>
+                    <label>Left: <input type="number" id="element-prop-left" step="1"> px</label>
+                    <label>Top: <input type="number" id="element-prop-top" step="1"> px</label>
+                    <label>Width: <input type="number" id="element-prop-width" step="1"> px</label>
+                    <label>Height: <input type="number" id="element-prop-height" step="1"> px</label>
+
+                    <!-- Textbox Specific -->
+                    <div class="prop-group" data-type="Textbox">
+                        <label>Default Value: <input type="text" id="element-prop-default-value"></label>
+                        <label title="JavaScript one-liner to get value from page (e.g., document.querySelector('#user-id').innerText)">
+                            Data Source (JS): <input type="text" id="element-prop-data-source">
+                        </label>
+                    </div>
+
+                    <!-- Codebox Specific -->
+                     <div class="prop-group" data-type="Codebox">
+                        <label>Source Textbox ID:
+                            <select id="element-prop-source-id">
+                                <!-- Options populated by JS -->
+                            </select>
+                        </label>
+                    </div>
+
+                     <!-- Imagebox Specific (Placeholder) -->
+                     <div class="prop-group" data-type="Imagebox">
+                         <p><i>(Image properties placeholder)</i></p>
+                     </div>
+                </div>
+                 <div id="element-properties-placeholder">
+                     <i>Select an element on the canvas to edit its properties.</i>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>
